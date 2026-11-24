@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.55;
+}
+
+:focus-visible {
+  outline: 2px solid #167A85;
+  outline-offset: 2px;
+}
+
+audio { accent-color: #0F5E66; }
+
+/* Recording waveform: the one animated moment on the page */
+@keyframes vx-wave {
+  0%, 100% { transform: scaleY(.25); }
+  50% { transform: scaleY(1); }
+}
+.vx-wave span {
+  display: inline-block;
+  width: 3px;
+  height: 28px;
+  margin: 0 1.5px;
+  border-radius: 2px;
+  background: #E8A317;
+  transform-origin: center;
+  animation: vx-wave 1s ease-in-out infinite;
+}
+.vx-wave span:nth-child(2n) { animation-delay: .15s; }
+.vx-wave span:nth-child(3n) { animation-delay: .3s; }
+.vx-wave span:nth-child(5n) { animation-delay: .45s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vx-wave span { animation: none; transform: scaleY(.6); }
+  * { scroll-behavior: auto !important; }
+}
